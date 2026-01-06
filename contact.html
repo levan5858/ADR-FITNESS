@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | ADR Fitness</title>
+  <link rel="stylesheet" href="styles/global.css" />
+  <meta name="description" content="Speak with the ADR Fitness concierge team for training, media, and partnership inquiries." />
+</head>
+<body class="page">
+  <header>
+    <div class="container nav-bar">
+      <a class="brand" href="index.html">
+        <img src="assets/adr-logo.png" alt="ADR Fitness logo" onerror="this.style.display='none'" />
+        <div class="wordmark">
+          <span>ADR FITNESS</span>
+          <span>HEALTH IS WEALTH</span>
+        </div>
+      </a>
+      <nav>
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn secondary" href="media.html">Media</a>
+        <a class="btn" href="contact.html">Join Waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">Contact</div>
+        <h1>Speak with the ADR concierge.</h1>
+        <p class="tagline">Training, media, partnerships, or press—our team responds within one business day.</p>
+        <div class="floating-cta">
+          <a class="btn" href="#contact-form">Send a note</a>
+          <a class="btn secondary" href="media.html">View media</a>
+        </div>
+        <div class="stats-band">
+          <div class="stat">
+            <div class="label">Response</div>
+            <div class="value">24h</div>
+          </div>
+          <div class="stat">
+            <div class="label">Locations</div>
+            <div class="value">Global</div>
+          </div>
+          <div class="stat">
+            <div class="label">Members</div>
+            <div class="value">Invite-only</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-media reveal">
+        <div class="glow"></div>
+        <div class="hero-card glass">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80" alt="Andrei Deiu portrait" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal contact-grid">
+      <div class="card glass contact-card">
+        <h2>Send a message</h2>
+        <p>Tell us what you need—concierge, programming, partnerships, or media. We keep it concise and confidential.</p>
+        <form id="contact-form" novalidate>
+          <div class="input">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="input">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="input">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="What can we help you with?" required></textarea>
+          </div>
+          <div class="form-footer">
+            <div class="form-status status"></div>
+            <button class="btn" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="card glass contact-aside">
+        <div class="mini-card">
+          <h3>Concierge</h3>
+          <p>concierge@adrfitness.com</p>
+          <p>+44 (0)20 0000 0000</p>
+        </div>
+        <div class="mini-card">
+          <h3>Media & Partnerships</h3>
+          <p>media@adrfitness.com</p>
+          <p>partnerships@adrfitness.com</p>
+        </div>
+        <div class="mini-card">
+          <h3>Follow the journey</h3>
+          <p><a href="https://www.youtube.com" target="_blank" rel="noreferrer">YouTube</a> · <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a></p>
+          <p>Get the newest drops and openings first.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="cta-panel glass">
+        <div>
+          <div class="eyebrow">Health is Wealth</div>
+          <h2 class="title-lg">Want first access to openings and merch?</h2>
+          <p>Join the ADR list for location launches, premium coaching cohorts, and limited drops.</p>
+        </div>
+        <a class="btn" href="merch.html">Preview the merch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span class="js-year"></span> ADR Fitness. Health is Wealth.</div>
+      <div class="footer-links">
+        <a href="media.html">Media</a>
+        <a href="merch.html">Merch</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

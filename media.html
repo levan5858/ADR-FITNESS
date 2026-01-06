@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Gallery | ADR Fitness</title>
+  <link rel="stylesheet" href="styles/global.css" />
+  <meta name="description" content="Watch Andrei Deiu’s training, events, and behind-the-scenes moments at ADR Fitness." />
+</head>
+<body class="page">
+  <header>
+    <div class="container nav-bar">
+      <a class="brand" href="index.html">
+        <img src="assets/adr-logo.png" alt="ADR Fitness logo" onerror="this.style.display='none'" />
+        <div class="wordmark">
+          <span>ADR FITNESS</span>
+          <span>HEALTH IS WEALTH</span>
+        </div>
+      </a>
+      <nav>
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn secondary" href="merch.html">Merch</a>
+        <a class="btn" href="contact.html">Join Waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section reveal">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Media</div>
+          <h1 class="title-lg">The ADR Standard in motion.</h1>
+          <p>Training sessions, stage highlights, and behind-the-scenes moments from Andrei’s world.</p>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="photo">Photos</button>
+        <button class="filter-btn" data-filter="video">Videos</button>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" tabindex="0" data-type="video" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-caption="Stage highlights and posing discipline.">
+          <span class="tag">Video</span>
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80" alt="Workout video cover" />
+        </div>
+        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=80" data-caption="Minimal, performance-first equipment layout.">
+          <span class="tag">Photo</span>
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=80" alt="Gym detail" />
+        </div>
+        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="https://images.unsplash.com/photo-1502301197179-65228ab57f78?auto=format&fit=crop&w=900&q=80" data-caption="Event lighting and ADR stage aesthetic.">
+          <span class="tag">Photo</span>
+          <img src="https://images.unsplash.com/photo-1502301197179-65228ab57f78?auto=format&fit=crop&w=900&q=80" alt="Event lighting" />
+        </div>
+        <div class="gallery-item" tabindex="0" data-type="video" data-video="https://www.youtube.com/embed/CeC2vDgBbhk" data-caption="Strength, tempo, and control in upper-body training.">
+          <span class="tag">Video</span>
+          <img src="https://images.unsplash.com/photo-1583417366151-0ca4f2701d5b?auto=format&fit=crop&w=900&q=80" alt="Posing routine" />
+        </div>
+        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="https://images.unsplash.com/photo-1598972874517-22d5dd6bb4e6?auto=format&fit=crop&w=900&q=80" data-caption="Backstage coaching before stage time.">
+          <span class="tag">Photo</span>
+          <img src="https://images.unsplash.com/photo-1598972874517-22d5dd6bb4e6?auto=format&fit=crop&w=900&q=80" alt="Behind the scenes" />
+        </div>
+        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" data-caption="Portrait of Andrei — the ADR standard.">
+          <span class="tag">Photo</span>
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Portrait" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Featured Video</div>
+          <h2 class="title-lg">A look inside ADR training.</h2>
+        </div>
+      </div>
+      <div class="card glass">
+        <div style="position:relative;padding-bottom:56.25%;border-radius:20px;overflow:hidden;">
+          <iframe style="position:absolute;inset:0;width:100%;height:100%;border:0;" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Featured ADR video" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span class="js-year"></span> ADR Fitness. Health is Wealth.</div>
+      <div class="footer-links">
+        <a href="merch.html">Merch</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
