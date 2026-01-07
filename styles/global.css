@@ -260,10 +260,13 @@ header {
 }
 
 .brand img {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
+  object-position: center;
   filter: drop-shadow(0 8px 18px rgba(208, 2, 27, 0.45));
+  display: block;
+  flex-shrink: 0;
 }
 
 .brand .wordmark {
