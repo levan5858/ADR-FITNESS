@@ -127,13 +127,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const overlay = document.createElement("div");
     overlay.className = "lightbox";
+    
+    // Check if video is local MP4 or YouTube
+    const isLocalVideo = videoSrc && (videoSrc.endsWith('.mp4') || videoSrc.endsWith('.webm') || videoSrc.endsWith('.mov'));
+    const isYouTube = videoSrc && (videoSrc.includes('youtube.com') || videoSrc.includes('youtu.be'));
+    
     overlay.innerHTML = `
       <div class="lightbox-inner">
         <button class="lightbox-close" aria-label="Close" data-close="true">×</button>
         <div class="lightbox-media">
           ${
             videoSrc
-              ? `<iframe src="${videoSrc}" allowfullscreen title="${caption || "ADR media"}"></iframe>`
+              ? isLocalVideo
+                ? `<video controls autoplay><source src="${videoSrc}" type="video/mp4">Your browser does not support the video tag.</video>`
+                : `<iframe src="${videoSrc}" allowfullscreen title="${caption || "ADR media"}"></iframe>`
               : `<img src="${imageSrc}" alt="${caption || "ADR media"}" />`
           }
         </div>
