@@ -7,14 +7,25 @@
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
   <link rel="canonical" href="https://adr.fitness/locations" />
   <script>
-    // Force HTTPS redirect for mobile browsers
+    // Force HTTPS and non-www redirect
     (function() {
-      if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-        location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+      var hostname = location.hostname;
+      var isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
+      if (isLocalhost) return;
+      var needsRedirect = false;
+      var newUrl = '';
+      if (hostname === 'www.adr.fitness') {
+        newUrl = 'https://adr.fitness' + location.pathname + location.search + location.hash;
+        needsRedirect = true;
+      } else if (location.protocol !== 'https:') {
+        newUrl = 'https:' + window.location.href.substring(window.location.protocol.length);
+        needsRedirect = true;
       }
+      if (needsRedirect) location.replace(newUrl);
     })();
   </script>
   <title>Locations | ADR Fitness</title>
+  <link rel="preload" href="styles/global.css" as="style" />
   <link rel="stylesheet" href="styles/global.css" />
   <meta name="description" content="ADR Fitness locations are coming soon. Explore the future map and join the waitlist." />
 </head>

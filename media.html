@@ -7,14 +7,25 @@
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
   <link rel="canonical" href="https://adr.fitness/media" />
   <script>
-    // Force HTTPS redirect for mobile browsers
+    // Force HTTPS and non-www redirect
     (function() {
-      if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-        location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+      var hostname = location.hostname;
+      var isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
+      if (isLocalhost) return;
+      var needsRedirect = false;
+      var newUrl = '';
+      if (hostname === 'www.adr.fitness') {
+        newUrl = 'https://adr.fitness' + location.pathname + location.search + location.hash;
+        needsRedirect = true;
+      } else if (location.protocol !== 'https:') {
+        newUrl = 'https:' + window.location.href.substring(window.location.protocol.length);
+        needsRedirect = true;
       }
+      if (needsRedirect) location.replace(newUrl);
     })();
   </script>
   <title>Media Gallery | ADR Fitness</title>
+  <link rel="preload" href="styles/global.css" as="style" />
   <link rel="stylesheet" href="styles/global.css" />
   <meta name="description" content="Watch Andrei Deiu's training, events, and behind-the-scenes moments at ADR Fitness." />
 </head>
@@ -79,70 +90,50 @@
           </video>
         </div>
         
-        <!-- Photos - Using only existing images (12, 15, 16, 17, 18, 29, 31, 32, 34, 37, 42, 43, 45, 50) -->
+        <!-- Photos - Removed duplicates: andrei-16.png, andrei-31.jpg, andrei-34.jpg (used as video posters) and andrei-50.png, andrei-50.webp (duplicates) -->
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-12.jpg" data-caption="Andrei Deiu - IFBB Pro physique showcase">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-12.jpg" alt="Andrei Deiu IFBB Pro physique" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-12.jpg" alt="Andrei Deiu IFBB Pro physique" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-15.jpg" data-caption="Andrei Deiu - IFBB Pro Men's Physique competitor">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-15.jpg" alt="Andrei Deiu IFBB Pro" loading="lazy" width="800" height="600" />
-        </div>
-        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-16.png" data-caption="Andrei Deiu at 2017 Amateur Olympia - San Marino">
-          <span class="tag">Photo</span>
-          <img src="assets/images/andrei-16.png" alt="Andrei Deiu Olympia 2017" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-15.jpg" alt="Andrei Deiu IFBB Pro" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-17.jpg" data-caption="Andrei Deiu - Professional athlete lifestyle">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-17.jpg" alt="Andrei Deiu professional athlete" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-17.jpg" alt="Andrei Deiu professional athlete" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-18.jpg" data-caption="Andrei Deiu - Stage presence and posing mastery">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-18.jpg" alt="Andrei Deiu stage posing" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-18.jpg" alt="Andrei Deiu stage posing" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-29.jpg" data-caption="Andrei Deiu - Recovery and stretching protocols">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-29.jpg" alt="Andrei Deiu recovery" loading="lazy" width="800" height="600" />
-        </div>
-        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-31.jpg" data-caption="Andrei Deiu - Competition stage presence">
-          <span class="tag">Photo</span>
-          <img src="assets/images/andrei-31.jpg" alt="Andrei Deiu stage presence" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-29.jpg" alt="Andrei Deiu recovery" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-32.jpg" data-caption="Andrei Deiu - Back and shoulders development">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-32.jpg" alt="Andrei Deiu back" loading="lazy" width="800" height="600" />
-        </div>
-        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-34.jpg" data-caption="Andrei Deiu - ADR Fitness brand photoshoot">
-          <span class="tag">Photo</span>
-          <img src="assets/images/andrei-34.jpg" alt="Andrei Deiu ADR photoshoot" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-32.jpg" alt="Andrei Deiu back" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-37.jpg" data-caption="Andrei Deiu - Cardio and conditioning">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-37.jpg" alt="Andrei Deiu cardio" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-37.jpg" alt="Andrei Deiu cardio" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-42.jpg" data-caption="Andrei Deiu - International fitness events">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-42.jpg" alt="Andrei Deiu events" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-42.jpg" alt="Andrei Deiu events" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-43.jpg" data-caption="Andrei Deiu - Coaching and mentorship">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-43.jpg" alt="Andrei Deiu coaching" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-43.jpg" alt="Andrei Deiu coaching" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-45.jpg" data-caption="Andrei Deiu - Lifestyle and daily motivation">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-45.jpg" alt="Andrei Deiu lifestyle" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-45.jpg" alt="Andrei Deiu lifestyle" loading="lazy" width="800" height="600" decoding="async" />
         </div>
         <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-50.jpg" data-caption="Andrei Deiu - Fitness inspiration and motivation">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-50.jpg" alt="Andrei Deiu fitness inspiration" loading="lazy" width="800" height="600" />
-        </div>
-        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-50.png" data-caption="Andrei Deiu - Training dedication and focus">
-          <span class="tag">Photo</span>
-          <img src="assets/images/andrei-50.png" alt="Andrei Deiu training focus" loading="lazy" width="800" height="600" />
-        </div>
-        <div class="gallery-item" tabindex="0" data-type="photo" data-lightbox="assets/images/andrei-50.webp" data-caption="Andrei Deiu - Professional athlete showcase">
-          <span class="tag">Photo</span>
-          <img src="assets/images/andrei-50.webp" alt="Andrei Deiu professional showcase" loading="lazy" width="800" height="600" />
+          <img src="assets/images/andrei-50.jpg" alt="Andrei Deiu fitness inspiration" loading="lazy" width="800" height="600" decoding="async" />
         </div>
       </div>
     </section>

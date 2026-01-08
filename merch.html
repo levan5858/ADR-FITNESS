@@ -7,14 +7,25 @@
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
   <link rel="canonical" href="https://adr.fitness/merch" />
   <script>
-    // Force HTTPS redirect for mobile browsers
+    // Force HTTPS and non-www redirect
     (function() {
-      if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-        location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+      var hostname = location.hostname;
+      var isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
+      if (isLocalhost) return;
+      var needsRedirect = false;
+      var newUrl = '';
+      if (hostname === 'www.adr.fitness') {
+        newUrl = 'https://adr.fitness' + location.pathname + location.search + location.hash;
+        needsRedirect = true;
+      } else if (location.protocol !== 'https:') {
+        newUrl = 'https:' + window.location.href.substring(window.location.protocol.length);
+        needsRedirect = true;
       }
+      if (needsRedirect) location.replace(newUrl);
     })();
   </script>
   <title>Merch | ADR Fitness</title>
+  <link rel="preload" href="styles/global.css" as="style" />
   <link rel="stylesheet" href="styles/global.css" />
   <meta name="description" content="Preview the coming-soon ADR Fitness merchandise—hoodies, shakers, and bags built with the brand's signature red and black aesthetic." />
 </head>
@@ -56,7 +67,7 @@
       <div class="hero-media reveal">
         <div class="glow"></div>
         <div class="hero-card glass">
-          <img src="assets/merch/hoodie.PNG" alt="ADR Fitness merchandise preview" loading="lazy" />
+          <img src="assets/merch/hoodie.PNG" alt="ADR Fitness merchandise preview" loading="lazy" decoding="async" width="800" height="600" />
         </div>
       </div>
     </section>
@@ -74,7 +85,7 @@
         <div class="merch-card">
           <span class="badge">Coming Soon</span>
           <div class="image-container">
-            <img src="assets/merch/tshirt.PNG" alt="ADR T-Shirt - Black with ADR Fitness logo" loading="lazy" />
+            <img src="assets/merch/tshirt.PNG" alt="ADR T-Shirt - Black with ADR Fitness logo" loading="lazy" decoding="async" width="400" height="400" />
           </div>
           <div class="product-info">
             <h3>ADR T-Shirt</h3>
@@ -84,7 +95,7 @@
         <div class="merch-card">
           <span class="badge">Coming Soon</span>
           <div class="image-container">
-            <img src="assets/merch/hoodie.PNG" alt="ADR Hoodie - Black with ADR Fitness logo" loading="lazy" />
+            <img src="assets/merch/hoodie.PNG" alt="ADR Hoodie - Black with ADR Fitness logo" loading="lazy" decoding="async" width="400" height="400" />
           </div>
           <div class="product-info">
             <h3>ADR Hoodie</h3>
@@ -94,7 +105,7 @@
         <div class="merch-card">
           <span class="badge">Coming Soon</span>
           <div class="image-container">
-            <img src="assets/merch/cap.PNG" alt="ADR Cap - Black baseball cap with ADR logo" loading="lazy" />
+            <img src="assets/merch/cap.PNG" alt="ADR Cap - Black baseball cap with ADR logo" loading="lazy" decoding="async" width="400" height="400" />
           </div>
           <div class="product-info">
             <h3>ADR Cap</h3>
@@ -104,7 +115,7 @@
         <div class="merch-card">
           <span class="badge">Coming Soon</span>
           <div class="image-container">
-            <img src="assets/merch/shaker.PNG" alt="ADR Hydration Shaker - Black with red accent lid" loading="lazy" />
+            <img src="assets/merch/shaker.PNG" alt="ADR Hydration Shaker - Black with red accent lid" loading="lazy" decoding="async" width="400" height="400" />
           </div>
           <div class="product-info">
             <h3>Hydration Shaker</h3>

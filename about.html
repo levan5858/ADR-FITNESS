@@ -7,14 +7,25 @@
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
   <link rel="canonical" href="https://adr.fitness/about" />
   <script>
-    // Force HTTPS redirect for mobile browsers
+    // Force HTTPS and non-www redirect
     (function() {
-      if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-        location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+      var hostname = location.hostname;
+      var isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
+      if (isLocalhost) return;
+      var needsRedirect = false;
+      var newUrl = '';
+      if (hostname === 'www.adr.fitness') {
+        newUrl = 'https://adr.fitness' + location.pathname + location.search + location.hash;
+        needsRedirect = true;
+      } else if (location.protocol !== 'https:') {
+        newUrl = 'https:' + window.location.href.substring(window.location.protocol.length);
+        needsRedirect = true;
       }
+      if (needsRedirect) location.replace(newUrl);
     })();
   </script>
   <title>About Andrei Deiu | ADR Fitness</title>
+  <link rel="preload" href="styles/global.css" as="style" />
   <link rel="stylesheet" href="styles/global.css" />
   <meta name="description" content="Discover Andrei Deiu's journey from Romania to IFBB Pro, his 2017 Amateur Olympia victory, and the ADR Fitness gym brand he co-founded." />
 </head>
@@ -70,7 +81,7 @@
       <div class="hero-media reveal">
         <div class="glow"></div>
         <div class="hero-card glass">
-          <img src="assets/images/andrei-17.jpg" alt="Andrei Deiu - IFBB Pro Men's Physique competitor and ADR Fitness co-founder" loading="eager" />
+          <img src="assets/images/andrei-17.jpg" alt="Andrei Deiu - IFBB Pro Men's Physique competitor and ADR Fitness co-founder" loading="eager" fetchpriority="high" decoding="async" width="800" height="600" />
         </div>
       </div>
     </section>

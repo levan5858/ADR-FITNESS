@@ -51,6 +51,8 @@ img {
   max-width: 100%;
   display: block;
   height: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 /* Optimize image loading for mobile */
@@ -59,9 +61,19 @@ img[loading="lazy"] {
   contain-intrinsic-size: 800px;
 }
 
-/* Responsive images */
+/* Responsive images - prevent layout shift */
 img[width][height] {
   aspect-ratio: attr(width) / attr(height);
+}
+
+/* Performance: GPU acceleration for animations */
+.reveal,
+.card,
+.gallery-item,
+.merch-card {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 a {
@@ -1121,4 +1133,37 @@ footer {
   .container {
     padding: 0 1rem;
   }
+}
+
+/* Performance optimizations */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Reduce repaints on scroll */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize video loading */
+video {
+  will-change: contents;
+  transform: translateZ(0);
+}
+
+/* Critical rendering path optimization */
+body {
+  contain: layout style paint;
+}
+
+/* Optimize font loading */
+@font-face {
+  font-family: "Steel Sans";
+  src: url("../assets/fonts/SteelSans.woff2") format("woff2"), url("../assets/fonts/SteelSans.woff") format("woff");
+  font-weight: 400 800;
+  font-display: swap;
+  font-display: optional;
 }

@@ -7,17 +7,30 @@
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
   <link rel="canonical" href="https://adr.fitness/" />
   <script>
-    // Force HTTPS redirect for mobile browsers
+    // Force HTTPS and non-www redirect
     (function() {
-      if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-        location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+      var hostname = location.hostname;
+      var isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
+      if (isLocalhost) return;
+      var needsRedirect = false;
+      var newUrl = '';
+      if (hostname === 'www.adr.fitness') {
+        newUrl = 'https://adr.fitness' + location.pathname + location.search + location.hash;
+        needsRedirect = true;
+      } else if (location.protocol !== 'https:') {
+        newUrl = 'https:' + window.location.href.substring(window.location.protocol.length);
+        needsRedirect = true;
       }
+      if (needsRedirect) location.replace(newUrl);
     })();
   </script>
   <title>ADR Fitness | Health is Wealth</title>
+  <link rel="preload" href="styles/global.css" as="style" />
+  <link rel="preload" href="assets/IMG_2008.PNG" as="image" />
   <link rel="stylesheet" href="styles/global.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <meta name="description" content="ADR Fitness — premium gym brand co-founded by IFBB Pro Andrei Deiu. Experience IFBB Pro-level training methods, 3D Gains program, and luxury fitness spaces. Health is Wealth." />
 </head>
 <body class="page">
@@ -58,7 +71,7 @@
       <div class="hero-media reveal">
         <div class="glow"></div>
         <div class="hero-card glass">
-          <img src="assets/images/andrei-16.png" alt="Andrei Deiu at 2017 Amateur Olympia - ADR Fitness co-founder and IFBB Pro" loading="eager" />
+          <img src="assets/images/andrei-16.png" alt="Andrei Deiu at 2017 Amateur Olympia - ADR Fitness co-founder and IFBB Pro" loading="eager" fetchpriority="high" decoding="async" width="800" height="600" />
         </div>
       </div>
     </section>
@@ -115,11 +128,11 @@
       <div class="gallery-grid">
         <div class="gallery-item" data-type="photo" tabindex="0" data-lightbox="assets/images/andrei-31.jpg" data-caption="Andrei Deiu - Competition stage presence showcasing ADR Fitness methods">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-31.jpg" alt="Andrei Deiu competition stage presence" loading="lazy" />
+          <img src="assets/images/andrei-31.jpg" alt="Andrei Deiu competition stage presence" loading="lazy" decoding="async" width="800" height="600" />
         </div>
         <div class="gallery-item" data-type="photo" tabindex="0" data-lightbox="assets/images/andrei-34.jpg" data-caption="Andrei Deiu - ADR Fitness brand photoshoot">
           <span class="tag">Photo</span>
-          <img src="assets/images/andrei-34.jpg" alt="Andrei Deiu ADR Fitness photoshoot" loading="lazy" />
+          <img src="assets/images/andrei-34.jpg" alt="Andrei Deiu ADR Fitness photoshoot" loading="lazy" decoding="async" width="800" height="600" />
         </div>
         <div class="gallery-item" data-type="video" tabindex="0" data-video="assets/videos/StorySaver.net-andreideiu_-Video-1767814513377.mp4" data-caption="Andrei Deiu competition highlights and stage presence">
           <span class="tag">Video</span>
@@ -142,7 +155,7 @@
         <div class="merch-card">
           <span class="badge">Coming Soon</span>
           <div class="image-container">
-            <img src="assets/merch/tshirt.PNG" alt="ADR T-Shirt" loading="lazy" />
+            <img src="assets/merch/tshirt.PNG" alt="ADR T-Shirt" loading="lazy" decoding="async" width="400" height="400" />
           </div>
           <div class="product-info">
             <h3>ADR T-Shirt</h3>
@@ -152,7 +165,7 @@
         <div class="merch-card">
           <span class="badge">Coming Soon</span>
           <div class="image-container">
-            <img src="assets/merch/hoodie.PNG" alt="ADR Hoodie" loading="lazy" />
+            <img src="assets/merch/hoodie.PNG" alt="ADR Hoodie" loading="lazy" decoding="async" width="400" height="400" />
           </div>
           <div class="product-info">
             <h3>ADR Hoodie</h3>
@@ -162,7 +175,7 @@
         <div class="merch-card">
           <span class="badge">Coming Soon</span>
           <div class="image-container">
-            <img src="assets/merch/cap.PNG" alt="ADR Cap" loading="lazy" />
+            <img src="assets/merch/cap.PNG" alt="ADR Cap" loading="lazy" decoding="async" width="400" height="400" />
           </div>
           <div class="product-info">
             <h3>ADR Cap</h3>
@@ -172,7 +185,7 @@
         <div class="merch-card">
           <span class="badge">Coming Soon</span>
           <div class="image-container">
-            <img src="assets/merch/shaker.PNG" alt="ADR Shaker" loading="lazy" />
+            <img src="assets/merch/shaker.PNG" alt="ADR Shaker" loading="lazy" decoding="async" width="400" height="400" />
           </div>
           <div class="product-info">
             <h3>Hydration Shaker</h3>
