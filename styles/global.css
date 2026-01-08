@@ -663,52 +663,92 @@ nav a.active {
 .merch-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .merch-card {
   position: relative;
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.45));
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.4));
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.merch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(208, 2, 27, 0.2), 0 4px 16px rgba(0, 0, 0, 0.4);
+  border-color: rgba(208, 2, 27, 0.3);
 }
 
 .merch-card .badge {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 2;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Product image container with fixed aspect ratio */
+.merch-card .image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: hidden;
 }
 
 .merch-card img {
   width: 100%;
-  height: 280px;
+  height: 100%;
   object-fit: contain;
   object-position: center;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.05);
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .merch-card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.08);
+}
+
+/* Product information section */
+.merch-card .product-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.75rem;
 }
 
 .merch-card h3 {
-  margin: 0.5rem 0;
+  margin: 0;
   font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.3;
 }
 
 .merch-card p {
   margin: 0;
   line-height: 1.6;
   color: var(--gray-300);
+  font-size: 0.95rem;
+  flex-grow: 1;
 }
 
 .api-widget {
@@ -826,11 +866,24 @@ footer {
 
   .merch-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
+    gap: 1.5rem;
+  }
+  
+  .merch-card .image-container {
+    padding: 1.5rem;
+  }
+  
+  .merch-card .product-info {
+    padding: 1.25rem;
   }
 
-  .merch-card img {
-    height: 260px;
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 3 / 4;
   }
 
   nav ul {
@@ -879,11 +932,41 @@ footer {
 
   .merch-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
+    max-width: 400px;
+  }
+  
+  .merch-card .image-container {
+    padding: 1.5rem;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .merch-card .product-info {
+    padding: 1rem;
+  }
+  
+  .merch-card h3 {
+    font-size: 1.15rem;
+  }
+  
+  .merch-card p {
+    font-size: 0.9rem;
   }
 
-  .merch-card img {
-    height: 240px;
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .gallery-item {
+    aspect-ratio: 1 / 1;
+  }
+
+  .gallery-item img,
+  .gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .hero-copy h1 {
