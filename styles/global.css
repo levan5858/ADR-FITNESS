@@ -662,33 +662,53 @@ nav a.active {
 
 .merch-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .merch-card {
   position: relative;
   border-radius: var(--radius-lg);
-  padding: 1.2rem;
+  padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.45));
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .merch-card .badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
 }
 
 .merch-card img {
   width: 100%;
-  height: 200px;
+  height: 280px;
   object-fit: contain;
   object-position: center;
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.merch-card:hover img {
+  transform: scale(1.05);
+}
+
+.merch-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.merch-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--gray-300);
 }
 
 .api-widget {
@@ -846,6 +866,15 @@ footer {
 
   .nav-actions {
     display: none;
+  }
+
+  .merch-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .merch-card img {
+    height: 240px;
   }
 
   .hero-copy h1 {
