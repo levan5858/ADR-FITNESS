@@ -824,6 +824,15 @@ footer {
     max-width: 160px;
   }
 
+  .merch-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .merch-card img {
+    height: 260px;
+  }
+
   nav ul {
     position: absolute;
     inset: 72px 1rem auto 1rem;
