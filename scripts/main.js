@@ -29,14 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Active link highlighting
   const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  const pathname = window.location.pathname;
   document.querySelectorAll("nav a").forEach((link) => {
     const href = link.getAttribute("href");
-    if ((currentPath === "" && href === "index.html") || href === currentPath) {
+    const linkPath = href === "/" ? "/" : href;
+    if (pathname === linkPath || (pathname === "/" && href === "/") || 
+        (pathname.endsWith("/") && pathname.slice(0, -1) === linkPath) ||
+        (currentPath === "" && href === "/")) {
       link.classList.add("active");
     }
   });
 
-  // Reveal on scroll
+  // Reveal on scroll with staggered animations
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
     const observer = new IntersectionObserver(
@@ -48,12 +52,46 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       },
-      { threshold: 0.24 }
+      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
     );
     revealEls.forEach((el) => observer.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
+
+  // Staggered animations for grid items
+  const gridItems = document.querySelectorAll(".gallery-item, .merch-card, .grid .card");
+  if ("IntersectionObserver" in window && gridItems.length) {
+    const gridObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("is-visible");
+            }, index * 50); // Stagger by 50ms
+            gridObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+    );
+    gridItems.forEach((el) => gridObserver.observe(el));
+  } else {
+    gridItems.forEach((el) => el.classList.add("is-visible"));
+  }
+
+  // Header scroll effect
+  let lastScroll = 0;
+  const header = document.querySelector("header");
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 50) {
+      header?.classList.add("scrolled");
+    } else {
+      header?.classList.remove("scrolled");
+    }
+    lastScroll = currentScroll;
+  });
 
   // Filters (media gallery)
   if (filterButtons.length && filterItems.length) {
