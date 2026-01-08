@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+  <link rel="canonical" href="https://adr.fitness/contact" />
+  <script>
+    // Force HTTPS redirect for mobile browsers
+    (function() {
+      if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+      }
+    })();
+  </script>
   <title>Contact | ADR Fitness</title>
   <link rel="stylesheet" href="styles/global.css" />
   <meta name="description" content="Speak with the ADR Fitness concierge team for training, media, and partnership inquiries." />
